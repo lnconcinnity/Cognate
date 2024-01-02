@@ -1,0 +1,12 @@
+{
+  "name": "Cognate",
+  "tree": {
+    "$className": "DataModel",
+
+    "ReplicatedStorage": {
+      "Cognate": {
+        "$path": "src"
+      }
+    }
+  }
+}
