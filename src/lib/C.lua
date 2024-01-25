@@ -9,6 +9,7 @@ type StackInfo = {
     line: number,
     source: string,
     closure: Closure | nil,
+    closure_id: string,
 }
 
 local function _onDebugInfoRequestErrored(msg: string)
@@ -39,6 +40,7 @@ function C.getStackInfo(stackLevel: number): StackInfo
     local nargs, variadic, name, line, src, closure = safeGetDebugInfo(stackLevel, "anlsf")
     return {
         closure_name = if name ~= nil and #name > 0 then name else (if src == nil then "<cclosure>" else "<anonymous>"),
+        closure_address = if closure  ~= nil then tostring(closure) else "n/a",
         arg_count = nargs or -1,
         is_variadic = if variadic ~= nil then variadic else false,
         line = line or -1,
